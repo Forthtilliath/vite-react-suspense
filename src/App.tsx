@@ -14,15 +14,17 @@ function App() {
       </Card>
 
       <Card>
-        <Suspense fallback="Loading posts...">
-          <Data type="Posts" />
-        </Suspense>
+        <ErrorBoundary>
+          <Suspense fallback="Loading posts...">
+            <Data type="Posts" hasError />
+          </Suspense>
+        </ErrorBoundary>
       </Card>
 
       <Card>
-        <ErrorBoundary>
+        <ErrorBoundary fallback={<>Error</>}>
           <Suspense fallback="Loading albums...">
-            <Data type="Albums" hasError  />
+            <Data type="Albums" hasError />
           </Suspense>
         </ErrorBoundary>
       </Card>
